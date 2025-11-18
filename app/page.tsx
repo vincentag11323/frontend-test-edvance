@@ -1,4 +1,6 @@
+import MovieCard from "@/components/MovieCard";
 import { requestDetails } from "./api";
+import { Grid } from "@mui/material";
 
 const getDetails = async () => {
   const a = await requestDetails()
@@ -10,8 +12,16 @@ export default async function Home() {
  console.log('a', a)
 
   return (
-    <div> 
-      Hello world
+    <div className="p-5"> 
+      <Grid container spacing={2} >
+         
+<MovieCard/>
+  
+<MovieCard/>  
+<MovieCard/> 
+      </Grid>
+      
+      
     </div>
   );
 }

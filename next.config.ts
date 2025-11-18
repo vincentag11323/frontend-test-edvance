@@ -9,6 +9,11 @@ const nextConfig: NextConfig = {
   //     },
   //   ];
   // },
+              // domains: ['assets.example.com', 'another-cdn.com'], // Replace with your image domains
+
+  images:{
+    domains:['image.tmdb.org']
+  }
 };
 
 export default nextConfig;
