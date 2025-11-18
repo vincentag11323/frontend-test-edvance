@@ -1,6 +1,8 @@
 "use server"
 
-import { TMDB } from '@lorenzopant/tmdb';
+import { PaginatedResponse, TMDB } from '@lorenzopant/tmdb';
+
+import { MovieDetail } from '@/models/MovieDetail';
 
 const API_KEY = process.env.API_KEY ?? "";
 const BASE_URL = "http://api.themoviedb.org/";
@@ -8,7 +10,7 @@ const tmdb = new TMDB(API_KEY);
 
 
 
-export async function request(path: string, params: Record<string, string | number> = {}) {
+export async function request<T>(path: string, params: Record<string, string | number> = {}) : Promise<T> {
     console.log(' run', path, params)
   const url = new URL(path , BASE_URL )
   console.log('url', url.toString())
@@ -38,7 +40,7 @@ export async function request(path: string, params: Record<string, string | numb
 }
 
 export async function requestDetails(){
-    return await  request("/3/discover/movie", {
+    return await  request<PaginatedResponse<MovieDetail>>("/3/discover/movie", {
   "primary_release_date.lte": "2016-12-31",
   "sort_by": "release_date.desc",
   page: 1,
