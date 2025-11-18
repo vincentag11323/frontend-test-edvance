@@ -1,5 +1,6 @@
 import { Grid } from "@mui/material";
 import MovieCard from "@/components/MovieCard";
+import Navbar from "@/components/Navbar";
 import { requestDetails } from "./api";
 
 export default async function Home() {
@@ -7,7 +8,9 @@ export default async function Home() {
 
 
   return (
-    <div className="p-5"> 
+    <div className="p-5 flex flex-col gap-4"> 
+            <Navbar/>
+
       <Grid container spacing={3} >
          {
           movies.results.map( movie => 
@@ -20,3 +23,4 @@ export default async function Home() {
     </div>
   );
 }
+
