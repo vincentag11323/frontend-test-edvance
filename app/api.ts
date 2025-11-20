@@ -39,11 +39,11 @@ export async function request<T>(path: string, params: Record<string, string | n
   return res.json();
 }
 
-export async function requestDetails(){
+export async function requestDetails(page: number = 1, sort_by: string = "release_date.desc" ){
     return await  request<PaginatedResponse<MovieDetail>>("/3/discover/movie", {
   "primary_release_date.lte": "2016-12-31",
-  "sort_by": "release_date.desc",
-  page: 1,
+  sort_by,
+  page,
 });
 }
 

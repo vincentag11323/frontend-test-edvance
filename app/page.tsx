@@ -1,24 +1,25 @@
-import { Grid } from "@mui/material";
-import MovieCard from "@/components/MovieCard";
+import Homepage from "@/components/Homepage";
 import Navbar from "@/components/Navbar";
+import ScrollListener from "@/components/ScrollListener";
 import { requestDetails } from "./api";
 
-export default async function Home() {
- const movies  =  await requestDetails()
+export default async function Home(props: {
+  searchParams?: Promise<{
+    query?: string;
+    page?: string;
+  }>;
+}) {
+  const searchParams = await props.searchParams;
+
+
+  const movies  =  await requestDetails(1, searchParams?.sort)
 
 
   return (
     <div className="p-5 flex flex-col gap-4"> 
             <Navbar/>
-
-      <Grid container spacing={3} >
-         {
-          movies.results.map( movie => 
-<MovieCard {...movie} key={movie.id}/>
-          )
-         }
-      </Grid>
-      
+        <Homepage movies={movies}/>
+     
       
     </div>
   );

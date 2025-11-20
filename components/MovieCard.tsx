@@ -1,4 +1,5 @@
 import { Chip, Grid, Typography } from "@mui/material";
+import { useEffect, useState } from "react";
 
 import Diversity1Icon from '@mui/icons-material/Diversity1';
 import EighteenUpRatingIcon from '@mui/icons-material/EighteenUpRating';
@@ -8,16 +9,39 @@ import { MovieDetail } from "@/models/MovieDetail";
 import StarIcon from '@mui/icons-material/Star';
 import { getPosterFullPath } from "@/app/api";
 
-export default async function MovieCard({ title, original_title, backdrop_path, adult, original_language, popularity, poster_path}: MovieDetail){
+export default  function MovieCard({ title, original_title, backdrop_path, adult, original_language, popularity, poster_path}: MovieDetail){
     // use either poster_path or to backdrop_path or empty string.
     const imgPartialPath = poster_path || backdrop_path || '';
-    const imgSrc =  imgPartialPath.length > 0 ? await getPosterFullPath(imgPartialPath) : ''     // TODO: inspect if you should get backdrop from diferent way.
-    
+    const [imgSrc, setImgSrc] = useState('');
+    const [, setIsLoading] = useState(true);
 
-    //TODO: check responsiveness later
+    useEffect(() => {
+    const fetchFullPath = async () => {
+      if (imgPartialPath && imgPartialPath.length > 0) {
+        setIsLoading(true);
+        try {
+          // 2. Await the asynchronous function call
+          const fullPath = await getPosterFullPath(imgPartialPath);
+          setImgSrc(fullPath);
+        } catch (error) {
+          console.error("Failed to get full poster path:", error);
+          setImgSrc(''); 
+        } finally {
+          setIsLoading(false);
+        }
+      } else {
+        setImgSrc('');
+        setIsLoading(false);
+      }
+    } 
+
+    fetchFullPath();
+
+    }, [imgPartialPath]);
+    
     // TODO: add tooltip for title ellipsis
 
-    return <Grid size={{ xs: 6, md: 4 }} className=' flex flex-col  ' > 
+    return <Grid size={{ xs: 12, sm: 6, md:4 }} className=' flex flex-col  ' > 
   
     <div className="w-full h-full  shadow-lg p-2 flex-col align-middle justify-around rounded-lg hover:shadow-xl transform hover:scale-105"> 
        
