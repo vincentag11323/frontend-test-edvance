@@ -11,17 +11,12 @@ export default async function Home(props: {
 }) {
   const searchParams = await props.searchParams;
 
-
-  const movies  =  await requestDetails(1, searchParams?.sort)
-
+  const movies = await requestDetails(1, searchParams?.sort);
 
   return (
-    <div className="p-5 flex flex-col gap-4"> 
-            <Navbar/>
-        <Homepage movies={movies}/>
-     
-      
+    <div className="p-5 flex flex-col gap-4">
+      <Navbar />
+      <Homepage movies={movies} />
     </div>
   );
 }
-
