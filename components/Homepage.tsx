@@ -17,11 +17,11 @@ import EventIcon from "@mui/icons-material/Event"; // Icon for Release Date
 import MovieCard from "@/components/MovieCard";
 import { MovieDetail } from "@/models/MovieDetail";
 import { PaginatedResponse } from "@/models/PaginatedResponse";
-import ScrollListener from "@/components/ScrollListener";
 import SortByAlphaIcon from "@mui/icons-material/SortByAlpha"; // Icon for Alphabetical
 import SortIcon from "@mui/icons-material/Sort"; // Generic Sort Icon for the label
 import StarIcon from "@mui/icons-material/Star"; // Icon for Rating
 import { requestDetails } from "@/app/api";
+import useScrollListener from "@/hooks/useScrollListener";
 
 const sortOptions = [
   {
@@ -79,6 +79,8 @@ export default function Homepage({
     setTotalPages,
   ]);
 
+  useScrollListener({ onFetch: fetchMore });
+
   return (
     <>
       <Box sx={{ minWidth: 200 }}>
@@ -127,7 +129,6 @@ export default function Homepage({
           <MovieCard {...movie} key={movie.id} />
         ))}
       </Grid>
-      <ScrollListener onFetch={fetchMore} />
     </>
   );
 }
