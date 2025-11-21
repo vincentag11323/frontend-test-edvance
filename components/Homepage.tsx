@@ -9,7 +9,7 @@ import {
   Select,
   Typography,
 } from "@mui/material";
-import { useCallback, useState, useTransition } from "react";
+import { useCallback, useEffect, useState, useTransition } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward"; // Icon for default sort direction (Descending)
@@ -81,6 +81,12 @@ export default function Homepage({
 
   useScrollListener({ onFetch: fetchMore });
 
+  useEffect(() => {
+    setData(movies.results)
+    setPage(movies.page)
+    setTotalPages(movies.total_pages)
+  } , [movies])
+
   return (
     <>
       <Box sx={{ minWidth: 200 }}>
@@ -103,7 +109,7 @@ export default function Homepage({
             }
             onChange={(event) => {
               setSortValue(event.target.value);
-              router.push("/?sort=" + event.target.value);
+              router.replace("/?sort=" + event.target.value);
             }}
           >
             {sortOptions.map((option) => (
@@ -129,6 +135,7 @@ export default function Homepage({
           <MovieCard {...movie} key={movie.id} />
         ))}
       </Grid>
+      
     </>
   );
 }
