@@ -40,10 +40,10 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 The unit testing files are in:
 
-1. `hooks/useScrollListener.test.jsx`
-2.
+1. `hooks/useScrollListener.test.jsx` - for useScrollListener (to listen to scrolling to the bottom of window)
+2. `components/MovieSortDropdown.test.jsx`- for MovieSortDropdown (to change sorting dropdown)
 
-To run the test:
+To run the test script, run:
 
 ```
 npm run test
@@ -54,3 +54,4 @@ npm run test
 Below are not implemented:
 
 1. Context API - I used useStates in favour of this, because adding Context API seems to be adding unnecessary complexity for this level.
+2. Book now - I'm not sure what kind of CSS effect is expected.
