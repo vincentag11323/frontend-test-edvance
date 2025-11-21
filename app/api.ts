@@ -51,8 +51,6 @@ export async function getPosterFullPath(path: string) {
   return tmdb.images.logo(path, "w185").toString();
 }
 
-export async function requestMovieDetail(
-  id: number
-) {
+export async function requestMovieDetail(id: number) {
   return await request<MovieDetail>(`/3/movie/${id}`, {});
 }

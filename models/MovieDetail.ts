@@ -9,5 +9,4 @@ export interface MovieDetail {
   id: number;
   genres: string[];
   overview: string;
-  
 }

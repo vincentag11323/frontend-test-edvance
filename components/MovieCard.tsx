@@ -11,7 +11,7 @@ import { getPosterFullPath } from "@/app/api";
 import { useRouter } from "next/navigation";
 
 export default function MovieCard({
-    id,
+  id,
   title,
   original_title,
   backdrop_path,
@@ -24,7 +24,7 @@ export default function MovieCard({
   const imgPartialPath = poster_path || backdrop_path || "";
   const [imgSrc, setImgSrc] = useState("");
   const [, setIsLoading] = useState(true);
-  const router = useRouter()
+  const router = useRouter();
 
   useEffect(() => {
     const fetchFullPath = async () => {
@@ -49,13 +49,14 @@ export default function MovieCard({
     fetchFullPath();
   }, [imgPartialPath]);
 
-
   return (
     <Grid size={{ xs: 12, sm: 6, md: 4 }} className=" flex flex-col  ">
-      <div className="w-full h-full  shadow-lg p-2 flex-col align-middle justify-around rounded-lg hover:shadow-xl transform hover:scale-105 hover:cursor-pointer"
-      onClick={() => {
-        router.push(`/movie/${id}`)
-      }}>
+      <div
+        className="w-full h-full  shadow-lg p-2 flex-col align-middle justify-around rounded-lg hover:shadow-xl transform hover:scale-105 hover:cursor-pointer"
+        onClick={() => {
+          router.push(`/movie/${id}`);
+        }}
+      >
         <div className=" w-[80%] mx-auto flex justify-center mb-1 my-auto min-h-[300px]">
           {/* EITHER DISPLAY IMAGE OR FALLBACK TO GREY BACKGROUND */}
           {imgSrc ? (
