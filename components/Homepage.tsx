@@ -3,9 +3,7 @@
 import { useCallback, useEffect, useState, useTransition } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
-import {
-  Grid,
-} from "@mui/material";
+import { Grid } from "@mui/material";
 import MovieCard from "@/components/MovieCard";
 import { MovieDetail } from "@/models/MovieDetail";
 import MovieSortDropdown from "./MovieSortDropdown";
@@ -61,10 +59,13 @@ export default function Homepage({
 
   return (
     <>
-      <MovieSortDropdown sortValue={sortValue} onSortChange={(v) => {
-              setSortValue(v);
-              router.replace("/?sort=" + v);
-            }}/>
+      <MovieSortDropdown
+        sortValue={sortValue}
+        onSortChange={(v) => {
+          setSortValue(v);
+          router.replace("/?sort=" + v);
+        }}
+      />
       <Grid container spacing={3}>
         {data.map((movie) => (
           <MovieCard {...movie} key={movie.id} />

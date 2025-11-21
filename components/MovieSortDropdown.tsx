@@ -35,49 +35,48 @@ const sortOptions = [
 
 export default function MovieSortDropdown({
   sortValue,
-  onSortChange
+  onSortChange,
 }: {
   sortValue: string;
-  onSortChange : (v: string) => void;
+  onSortChange: (v: string) => void;
 }) {
   return (
-      <Box sx={{ minWidth: 200 }}>
-        <FormControl fullWidth>
-          <InputLabel id="sort-select-label">
+    <Box sx={{ minWidth: 200 }}>
+      <FormControl fullWidth>
+        <InputLabel id="sort-select-label">
+          <Box sx={{ display: "flex", alignItems: "center" }}>
+            <SortIcon sx={{ mr: 1 }} />
+            Sort By
+          </Box>
+        </InputLabel>
+        <Select
+          labelId="sort-select-label"
+          id="sort-select"
+          value={sortValue}
+          label={
             <Box sx={{ display: "flex", alignItems: "center" }}>
               <SortIcon sx={{ mr: 1 }} />
               Sort By
             </Box>
-          </InputLabel>
-          <Select
-            labelId="sort-select-label"
-            id="sort-select"
-            value={sortValue}
-            label={
-              <Box sx={{ display: "flex", alignItems: "center" }}>
-                <SortIcon sx={{ mr: 1 }} />
-                Sort By
+          }
+          onChange={(e) => onSortChange(e.target.value)}
+        >
+          {sortOptions.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                {option.icon}
+                <Typography>{option.label}</Typography>
+                {option.value === "releaseDate" && (
+                  <ArrowDownwardIcon fontSize="inherit" color="action" />
+                )}
+                {option.value === "rating" && (
+                  <ArrowDownwardIcon fontSize="inherit" color="action" />
+                )}
               </Box>
-            }
-            onChange={(e) => onSortChange(e.target.value)}
-          >
-            {sortOptions.map((option) => (
-              <MenuItem key={option.value} value={option.value}>
-                <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                  {option.icon}
-                  <Typography>{option.label}</Typography>
-                  {option.value === "releaseDate" && (
-                    <ArrowDownwardIcon fontSize="inherit" color="action" />
-                  )}
-                  {option.value === "rating" && (
-                    <ArrowDownwardIcon fontSize="inherit" color="action" />
-                  )}
-                </Box>
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-      </Box>
-    
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+    </Box>
   );
 }
