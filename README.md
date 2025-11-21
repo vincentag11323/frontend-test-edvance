@@ -82,3 +82,11 @@ Below are not implemented:
 
 1. Context API - I used useStates in favour of this, because adding Context API seems to be adding unnecessary complexity for this level.
 2. Book now - I'm not sure what kind of CSS effect is expected.
+
+# env variable
+
+Please put your API key in for `TMDB` in `.env` at the root of directory as:
+
+```
+API_KEY=...
+```
