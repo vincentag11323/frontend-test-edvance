@@ -12,14 +12,14 @@ import {
 import { useCallback, useEffect, useState, useTransition } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
-import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward"; // Icon for default sort direction (Descending)
-import EventIcon from "@mui/icons-material/Event"; // Icon for Release Date
+import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
+import EventIcon from "@mui/icons-material/Event";
 import MovieCard from "@/components/MovieCard";
 import { MovieDetail } from "@/models/MovieDetail";
 import { PaginatedResponse } from "@/models/PaginatedResponse";
-import SortByAlphaIcon from "@mui/icons-material/SortByAlpha"; // Icon for Alphabetical
-import SortIcon from "@mui/icons-material/Sort"; // Generic Sort Icon for the label
-import StarIcon from "@mui/icons-material/Star"; // Icon for Rating
+import SortByAlphaIcon from "@mui/icons-material/SortByAlpha";
+import SortIcon from "@mui/icons-material/Sort";
+import StarIcon from "@mui/icons-material/Star";
 import { requestDetails } from "@/app/api";
 import useScrollListener from "@/hooks/useScrollListener";
 
