@@ -31,7 +31,7 @@ export default function MovieCard({
       if (imgPartialPath && imgPartialPath.length > 0) {
         setIsLoading(true);
         try {
-          // 2. Await the asynchronous function call
+          // Await the asynchronous function call
           const fullPath = await getPosterFullPath(imgPartialPath);
           setImgSrc(fullPath);
         } catch (error) {
@@ -50,7 +50,7 @@ export default function MovieCard({
   }, [imgPartialPath]);
 
   return (
-    <Grid size={{ xs: 12, sm: 6, md: 4 ,lg:3}} className=" flex flex-col  ">
+    <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }} className=" flex flex-col  ">
       <div
         className="w-full h-full  shadow-lg p-2 flex-col align-middle justify-around rounded-lg hover:shadow-xl transform hover:scale-105 hover:cursor-pointer"
         onClick={() => {

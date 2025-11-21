@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Chip, Grid, Typography } from "@mui/material";
+import { Button, Chip, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 
 import Diversity1Icon from "@mui/icons-material/Diversity1";
@@ -35,7 +35,7 @@ export default function MovieDetailPage({
       if (imgPartialPath && imgPartialPath.length > 0) {
         setIsLoading(true);
         try {
-          // 2. Await the asynchronous function call
+          // Await the asynchronous function call
           const fullPath = await getPosterFullPath(imgPartialPath);
           setImgSrc(fullPath);
         } catch (error) {
@@ -58,10 +58,8 @@ export default function MovieDetailPage({
       <Button onClick={() => router.push("/")}> BACK </Button>
 
       <div className=" w-full h-full flex justify-center p-5">
-       
         <div className="w-full sm:max-w-sm md:max-w-md lg:max-w-lg h-full  shadow-lg p-2 flex-col align-middle justify-around rounded-lg hover:shadow-xl transform hover:cursor-pointer">
           <div className=" w-[80%] mx-auto flex justify-center mb-1 my-auto min-h-[300px]">
-            
             {imgSrc ? (
               <Image
                 src={imgSrc}
@@ -98,11 +96,7 @@ export default function MovieDetailPage({
             </Typography>
           </div>
           <div className="mx-auto mb-5">
-            <Typography
-              variant="body1"
-              component="div"
-              textAlign={"center"}
-            >
+            <Typography variant="body1" component="div" textAlign={"center"}>
               {overview}
             </Typography>
           </div>
@@ -110,7 +104,7 @@ export default function MovieDetailPage({
             {genres
               .map((v) => v.name)
               .map((v) => (
-                <Chip label={v} size="small" key={v}/>
+                <Chip label={v} size="small" key={v} />
               ))}
           </div>
           <div className="mx-auto flex justify-evenly align-baseline">

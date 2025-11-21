@@ -1,3 +1,4 @@
+// MovieDetail class as from TMDB
 export interface MovieDetail {
   title: string;
   original_title: string;
@@ -11,6 +12,6 @@ export interface MovieDetail {
   overview: string;
 }
 
-interface Genre{
+interface Genre {
   name: string;
 }

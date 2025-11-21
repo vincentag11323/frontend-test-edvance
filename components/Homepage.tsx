@@ -82,10 +82,10 @@ export default function Homepage({
   useScrollListener({ onFetch: fetchMore });
 
   useEffect(() => {
-    setData(movies.results)
-    setPage(movies.page)
-    setTotalPages(movies.total_pages)
-  } , [movies])
+    setData(movies.results);
+    setPage(movies.page);
+    setTotalPages(movies.total_pages);
+  }, [movies]);
 
   return (
     <>
@@ -117,7 +117,6 @@ export default function Homepage({
                 <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
                   {option.icon}
                   <Typography>{option.label}</Typography>
-                  {/* Add a default direction icon for visual cue */}
                   {option.value === "releaseDate" && (
                     <ArrowDownwardIcon fontSize="inherit" color="action" />
                   )}
@@ -135,7 +134,6 @@ export default function Homepage({
           <MovieCard {...movie} key={movie.id} />
         ))}
       </Grid>
-      
     </>
   );
 }
