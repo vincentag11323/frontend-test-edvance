@@ -12,10 +12,7 @@ export async function request<T>(
   path: string,
   params: Record<string, string | number> = {},
 ): Promise<T> {
-  console.log(" run", path, params);
   const url = new URL(path, BASE_URL);
-  console.log("url", url.toString());
-
   // always include API key
   url.searchParams.set("api_key", API_KEY);
 
