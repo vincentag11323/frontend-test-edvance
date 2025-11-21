@@ -31,3 +31,6 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 2. UI components are in `components` folder
 3. Tyescript models are in `models` folder
 4. hooks are in `hooks` folder
+5. we have 2 pages:
+   - `/` root page for homepage, with infinite scroll capability
+   - `/movie/[id]` for particular movie

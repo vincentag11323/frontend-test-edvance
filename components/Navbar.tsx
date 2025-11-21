@@ -6,6 +6,7 @@ import { IconButton } from "@mui/material";
 export default function Navbar() {
   return (
     <div className="">
+      {/* just decoration, you can add more here for more navigations. */}
       <IconButton size="large" onClick={() => {}}>
         <HomeIcon />
       </IconButton>

@@ -7,4 +7,7 @@ export interface MovieDetail {
   popularity: number;
   poster_path: string | null;
   id: number;
+  genres: string[];
+  overview: string;
+  
 }
