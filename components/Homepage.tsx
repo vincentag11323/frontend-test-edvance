@@ -1,45 +1,17 @@
 "use client";
 
-import {
-  Box,
-  FormControl,
-  Grid,
-  InputLabel,
-  MenuItem,
-  Select,
-  Typography,
-} from "@mui/material";
 import { useCallback, useEffect, useState, useTransition } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
-import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
-import EventIcon from "@mui/icons-material/Event";
+import {
+  Grid,
+} from "@mui/material";
 import MovieCard from "@/components/MovieCard";
 import { MovieDetail } from "@/models/MovieDetail";
+import MovieSortDropdown from "./MovieSortDropdown";
 import { PaginatedResponse } from "@/models/PaginatedResponse";
-import SortByAlphaIcon from "@mui/icons-material/SortByAlpha";
-import SortIcon from "@mui/icons-material/Sort";
-import StarIcon from "@mui/icons-material/Star";
 import { requestDetails } from "@/app/api";
 import useScrollListener from "@/hooks/useScrollListener";
-
-const sortOptions = [
-  {
-    value: "release_date.desc",
-    label: "Release Date (Newest)",
-    icon: <EventIcon fontSize="small" />,
-  },
-  {
-    value: "original_title.asc",
-    label: "Alphabetical (A-Z)",
-    icon: <SortByAlphaIcon fontSize="small" />,
-  },
-  {
-    value: "popularity.desc",
-    label: "Popularity (Highest)",
-    icon: <StarIcon fontSize="small" />,
-  },
-];
 
 export default function Homepage({
   movies,
@@ -89,46 +61,10 @@ export default function Homepage({
 
   return (
     <>
-      <Box sx={{ minWidth: 200 }}>
-        <FormControl fullWidth>
-          <InputLabel id="sort-select-label">
-            <Box sx={{ display: "flex", alignItems: "center" }}>
-              <SortIcon sx={{ mr: 1 }} />
-              Sort By
-            </Box>
-          </InputLabel>
-          <Select
-            labelId="sort-select-label"
-            id="sort-select"
-            value={sortValue}
-            label={
-              <Box sx={{ display: "flex", alignItems: "center" }}>
-                <SortIcon sx={{ mr: 1 }} />
-                Sort By
-              </Box>
-            }
-            onChange={(event) => {
-              setSortValue(event.target.value);
-              router.replace("/?sort=" + event.target.value);
-            }}
-          >
-            {sortOptions.map((option) => (
-              <MenuItem key={option.value} value={option.value}>
-                <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                  {option.icon}
-                  <Typography>{option.label}</Typography>
-                  {option.value === "releaseDate" && (
-                    <ArrowDownwardIcon fontSize="inherit" color="action" />
-                  )}
-                  {option.value === "rating" && (
-                    <ArrowDownwardIcon fontSize="inherit" color="action" />
-                  )}
-                </Box>
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-      </Box>
+      <MovieSortDropdown sortValue={sortValue} onSortChange={(v) => {
+              setSortValue(v);
+              router.replace("/?sort=" + v);
+            }}/>
       <Grid container spacing={3}>
         {data.map((movie) => (
           <MovieCard {...movie} key={movie.id} />
