@@ -5,6 +5,7 @@ import Diversity1Icon from "@mui/icons-material/Diversity1";
 import EighteenUpRatingIcon from "@mui/icons-material/EighteenUpRating";
 import Image from "next/image";
 import LanguageIcon from "@mui/icons-material/Language";
+import MovieCardContainer from "./MovieCardContainer";
 import { MovieDetail } from "@/models/MovieDetail";
 import StarIcon from "@mui/icons-material/Star";
 import { getPosterFullPath } from "@/app/api";
@@ -50,13 +51,10 @@ export default function MovieCard({
   }, [imgPartialPath]);
 
   return (
-    <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }} className=" flex flex-col  ">
-      <div
-        className="w-full h-full  shadow-lg p-2 flex-col align-middle justify-around rounded-lg hover:shadow-xl transform hover:scale-105 hover:cursor-pointer"
-        onClick={() => {
+    <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }} className=" flex flex-col">
+      <MovieCardContainer  onClick={() => {
           router.push(`/movie/${id}`);
-        }}
-      >
+      }}>
         <div className=" w-[80%] mx-auto flex justify-center mb-1 my-auto min-h-[300px]">
           {/* EITHER DISPLAY IMAGE OR FALLBACK TO GREY BACKGROUND */}
           {imgSrc ? (
@@ -110,7 +108,7 @@ export default function MovieCard({
           />
           <Chip icon={<StarIcon />} label={popularity} size="small" />
         </div>
-      </div>
+      </MovieCardContainer>
     </Grid>
   );
 }

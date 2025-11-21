@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
+import { ArrowUpward } from "@mui/icons-material";
 import EventIcon from "@mui/icons-material/Event";
 import SortByAlphaIcon from "@mui/icons-material/SortByAlpha";
 import SortIcon from "@mui/icons-material/Sort";
@@ -66,12 +67,6 @@ export default function MovieSortDropdown({
               <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
                 {option.icon}
                 <Typography>{option.label}</Typography>
-                {option.value === "releaseDate" && (
-                  <ArrowDownwardIcon fontSize="inherit" color="action" />
-                )}
-                {option.value === "rating" && (
-                  <ArrowDownwardIcon fontSize="inherit" color="action" />
-                )}
               </Box>
             </MenuItem>
           ))}
