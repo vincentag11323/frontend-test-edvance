@@ -10,7 +10,6 @@ import LanguageIcon from "@mui/icons-material/Language";
 import { MovieDetail } from "@/models/MovieDetail";
 import StarIcon from "@mui/icons-material/Star";
 import { getPosterFullPath } from "@/app/api";
-import { requestMovieDetail } from "@/app/api";
 import { useRouter } from "next/navigation";
 
 export default function MovieDetailPage({
@@ -59,10 +58,10 @@ export default function MovieDetailPage({
       <Button onClick={() => router.push("/")}> BACK </Button>
 
       <div className=" w-full h-full flex justify-center p-5">
-        {" "}
+       
         <div className="w-full sm:max-w-sm md:max-w-md lg:max-w-lg h-full  shadow-lg p-2 flex-col align-middle justify-around rounded-lg hover:shadow-xl transform hover:cursor-pointer">
           <div className=" w-[80%] mx-auto flex justify-center mb-1 my-auto min-h-[300px]">
-            {" "}
+            
             {imgSrc ? (
               <Image
                 src={imgSrc}
@@ -74,8 +73,7 @@ export default function MovieDetailPage({
               />
             ) : (
               <div className="w-[80%] h-[300px] bg-gray-600 mx-auto text-transparent">
-                {" "}
-                a{" "}
+                a
               </div>
             )}
           </div>
@@ -101,7 +99,6 @@ export default function MovieDetailPage({
           </div>
           <div className="mx-auto mb-5">
             <Typography
-              // noWrap
               variant="body1"
               component="div"
               textAlign={"center"}
@@ -110,19 +107,11 @@ export default function MovieDetailPage({
             </Typography>
           </div>
           <div className="mx-auto mb-5 flex justify-center gap-5 ">
-            {/* <Typography
-            noWrap
-            variant="body1"
-            component="div"
-            textAlign={"center"}
-            className=""
-          > */}
             {genres
               .map((v) => v.name)
               .map((v) => (
-                <Chip label={v} size="small" />
+                <Chip label={v} size="small" key={v}/>
               ))}
-            {/* </Typography> */}
           </div>
           <div className="mx-auto flex justify-evenly align-baseline">
             {/* TAGS */}

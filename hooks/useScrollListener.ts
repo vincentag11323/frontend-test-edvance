@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect } from "react";
 
+// custom hook useScrollListener to listen to window object once we've reached to the bottom on the page, and then fetch more data.
 export default function useScrollListener({
   onFetch,
 }: {
@@ -21,9 +22,9 @@ export default function useScrollListener({
   }, [onFetch]);
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll); //attach listener to window
+    window.addEventListener("scroll", handleScroll); // attach listener to window
     return () => {
-      window.removeEventListener("scroll", handleScroll); //cleanup
+      window.removeEventListener("scroll", handleScroll); // cleanup
     };
   }, [handleScroll]);
 }
